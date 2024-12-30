@@ -1,0 +1,171 @@
+<div style="height: 64px;"></div>
+<div style="width: 94%;margin-left: auto;margin-right: auto;">
+   
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Nome e descrição</label>
+        </div>
+        <div class="mt1">
+            <label for="">Nome</label>
+        </div>
+        <div>
+            <input  type="text" placeholder="Nome" class="input-geral" [(ngModel)]="name">
+        </div>
+        <div >
+            <label for="">Categoria</label>
+        </div>
+        <div>
+            <input  type="text" placeholder="Nome" class="input-geral" [(ngModel)]="category">
+        </div>
+        <div >
+            <label for="">Descrição</label>
+        </div>
+        <div>
+            <textarea  placeholder="Descrição" class="input-geral"  [(ngModel)]="description" style="height: 128px;" ></textarea>
+        </div>
+       
+    </div>
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Preços</label>
+        </div>
+        <div style="display: flex;gap: 20px;margin-top: 16px;">
+            <div class="w100">
+                <div>
+                    <label for="">Preço de compra</label>
+                </div>
+                <div>
+                    <input  type="number" placeholder="R$ 0,00" class="input-50" [(ngModel)]="price">
+                </div>
+            </div>
+            <div class="w100">
+                <div>
+                    <label for="">Preço de venda</label>
+                </div>
+                <div>
+                    <input  type="number" placeholder="R$ 0,00" class="input-50" [(ngModel)]="price_sale">
+                </div>
+            </div>
+        </div>
+        <div class="mt1">
+            <label for="">Margem de lucro: 52%</label>
+        </div>
+       
+       
+    </div>
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Tipo de produto</label>
+        </div>
+        <div style="display: flex; gap: 20px; margin-top: 16px; flex-direction: column;">
+            
+            <div>
+                <input type="radio" id="produtoFisico" name="tipo_product"  [(ngModel)]="tipo_product" value="fisico">
+                <label for="produtoFisico">Produto físico</label>
+            </div>
+            <div>
+                <input type="radio" id="produtoDigital" name="tipo_product" [(ngModel)]="tipo_product" value="digital">
+                <label for="produtoDigital">Produto digital ou serviço</label>
+          
+            </div>
+        </div>
+    </div>
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Estoque</label>
+        </div>
+        <div style="display: flex; gap: 20px; margin-top: 16px; flex-direction: column;">
+            
+            <div>
+                <input type="radio" id="estoqueInf" name="estoque_product"  [(ngModel)]="tipo_stock" value="infinito">
+                <label for="stoqueInf">Infinito</label>
+            </div>
+            <div class="cent-icon">
+                <div>
+                    <input type="radio" id="estoqueFin" name="estoque_product" [(ngModel)]="tipo_stock" value="finito">
+                    <label for="estoqueFin">Limitado</label>
+              
+                </div>
+                <div >
+                    <label for="">Quantidade</label>
+                    <input  type="number" placeholder="0" class="input-20" [(ngModel)]="quantity">
+                </div>
+               
+
+            </div>
+          
+        </div>
+    </div>
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Códigos</label>
+        </div>
+        <div style="display: flex;gap: 20px;margin-top: 16px;">
+            <div class="w100">
+                <div>
+                    <label for="">Código SKU</label>
+                </div>
+                <div>
+                    <input  type="text" placeholder="R$ 0,00" class="input-50" [(ngModel)]="code_sku">
+                </div>
+            </div>
+            <div class="w100">
+                <div>
+                    <label for="">Código de barra</label>
+                </div>
+                <div>
+                    <input  type="text" placeholder="R$ 0,00" class="input-50" [(ngModel)]="code_bar">
+                </div>
+            </div>
+        </div>
+              
+       
+    </div>
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Peso e dimensões</label>
+        </div>
+        <div style="display: flex;gap: 20px;margin-top: 16px;">
+            <div class="w100">
+                <div>
+                    <label for="">Peso</label>
+                </div>
+                <div>
+                    <input  type="number" placeholder=" 0,00 g" class="input-50" [(ngModel)]="weight">
+                </div>
+            </div>
+            <div class="w100">
+                <div>
+                    <label for="">Comprimento</label>
+                </div>
+                <div>
+                    <input  type="number" placeholder=" 0,00 cm" class="input-50" [(ngModel)]="width">
+                </div>
+            </div>
+        </div>
+        <div style="display: flex;gap: 20px;">
+            <div class="w100">
+                <div>
+                    <label for="">Largura</label>
+                </div>
+                <div>
+                    <input  type="number" placeholder=" 0,00 cm" class="input-50" [(ngModel)]="length">
+                </div>
+            </div>
+            <div class="w100">
+                <div>
+                    <label for="">Altura</label>
+                </div>
+                <div>
+                    <input  type="number" placeholder=" 0,00 cm" class="input-50" [(ngModel)]="height">
+                </div>
+            </div>
+        </div>
+              
+       
+    </div>
+    <div class="mt1">
+        <button class="btn-register" (click)="criar_produto()">Salvar produto</button>
+    </div>
+</div>
+<div style="height: 72px;"></div>

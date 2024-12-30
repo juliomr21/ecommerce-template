@@ -1,0 +1,23 @@
+<div>
+  <p style="color: #757575;padding: 1rem;">
+    Welcome  Smart Stock <br>
+Please, log in to continue
+  </p>
+  <div style="margin-top: 24%;width: 90%;margin-left: auto;margin-right: auto;">
+    <div>
+      <label for="">User</label>
+    </div>
+    <div>
+      <input type="text" placeholder="user" class="input-geral" [(ngModel)]="userName">
+    
+    </div>
+    <div>
+      <div>
+        <label for="">Password</label>
+      </div>
+    </div>
+      <input type="text" placeholder="password" class="input-geral" [(ngModel)]="password">
+      
+    <button class="btn-register" (click)="login()">Login</button>
+  </div>
+</div>
