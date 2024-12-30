@@ -6,7 +6,7 @@
             <label class="f16" for="">Nome e descrição</label>
         </div>
         <div class="mt1">
-            <label for="">Nome</label>
+            <label for="">Nome (*)</label>
         </div>
         <div>
             <input  type="text" placeholder="Nome" class="input-geral" [(ngModel)]="name">
@@ -15,13 +15,13 @@
             <label for="">Categoria</label>
         </div>
         <div>
-            <input  type="text" placeholder="Nome" class="input-geral" [(ngModel)]="category">
+            <input  type="text" placeholder="Categoria do produto" class="input-geral" [(ngModel)]="category">
         </div>
         <div >
-            <label for="">Descrição</label>
+            <label for="">Descrição </label>
         </div>
         <div>
-            <textarea  placeholder="Descrição" class="input-geral"  [(ngModel)]="description" style="height: 128px;" ></textarea>
+            <textarea  placeholder="Descrição do produto" class="input-geral"  [(ngModel)]="description" style="height: 128px;" ></textarea>
         </div>
        
     </div>
@@ -32,23 +32,23 @@
         <div style="display: flex;gap: 20px;margin-top: 16px;">
             <div class="w100">
                 <div>
-                    <label for="">Preço de compra</label>
+                    <label for="">Preço de compra (*)</label>
                 </div>
                 <div>
-                    <input  type="number" placeholder="R$ 0,00" class="input-50" [(ngModel)]="price">
+                    <input  type="number" placeholder="R$ 0,00" class="input-50" [(ngModel)]="price" min="0">
                 </div>
             </div>
             <div class="w100">
                 <div>
-                    <label for="">Preço de venda</label>
+                    <label for="">Preço de venda (*)</label>
                 </div>
                 <div>
-                    <input  type="number" placeholder="R$ 0,00" class="input-50" [(ngModel)]="price_sale">
+                    <input  type="number" placeholder="R$ 0,00" class="input-50" [(ngModel)]="price_sale" min="0">
                 </div>
             </div>
         </div>
         <div class="mt1">
-            <label for="">Margem de lucro: 52%</label>
+            <label for="">Margem de lucro: {{calc_percente()}}</label>
         </div>
        
        
@@ -77,7 +77,7 @@
         <div style="display: flex; gap: 20px; margin-top: 16px; flex-direction: column;">
             
             <div>
-                <input type="radio" id="estoqueInf" name="estoque_product"  [(ngModel)]="tipo_stock" value="infinito">
+                <input type="radio" id="estoqueInf" name="estoque_product"  [(ngModel)]="tipo_stock" value="infinito" (change)="quantity = 1">
                 <label for="stoqueInf">Infinito</label>
             </div>
             <div class="cent-icon">
@@ -88,7 +88,7 @@
                 </div>
                 <div >
                     <label for="">Quantidade</label>
-                    <input  type="number" placeholder="0" class="input-20" [(ngModel)]="quantity">
+                    <input  type="number" placeholder="0" class="input-20" [(ngModel)]="quantity" [disabled]="tipo_stock == 'infinito'" min="1" (change)="cantidade()">
                 </div>
                
 
@@ -106,7 +106,7 @@
                     <label for="">Código SKU</label>
                 </div>
                 <div>
-                    <input  type="text" placeholder="R$ 0,00" class="input-50" [(ngModel)]="code_sku">
+                    <input  type="text" placeholder="ABCD123" class="input-50" [(ngModel)]="code_sku">
                 </div>
             </div>
             <div class="w100">
@@ -114,7 +114,7 @@
                     <label for="">Código de barra</label>
                 </div>
                 <div>
-                    <input  type="text" placeholder="R$ 0,00" class="input-50" [(ngModel)]="code_bar">
+                    <input  type="text" placeholder="0000000000000" class="input-50" [(ngModel)]="code_bar">
                 </div>
             </div>
         </div>
@@ -164,8 +164,18 @@
               
        
     </div>
+    
     <div class="mt1">
-        <button class="btn-register" (click)="criar_produto()">Salvar produto</button>
+        <span>Os campos obrigatórios estão marcados com (*)</span>
+        <button class="btn-register" (click)="criar_produto()" [disabled]="((name=='') || (price==null) || (price_sale == null))" [disabled]="isLoading">
+            <div style="display: flex;justify-content: center;gap: 20px;">
+                <div>Salvar produto</div>
+                @if (isLoading) {
+                  <div class="spinner"></div>
+             
+                   }
+              </div>
+            </button>
     </div>
 </div>
 <div style="height: 72px;"></div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpConexionService } from '../../http-conexion.service';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-criar-product',
   standalone: true,
@@ -13,11 +14,11 @@ export class CriarProductComponent {
   urlBase = environment.URL_BASE;
   name = '';
   description = '';
-  price = 0;
-  price_sale = 0;
+  price = 0 || null;
+  price_sale = 0 || null;
   tipo_product = 'fisico';
   tipo_stock = 'infinito';
-  quantity = 0;
+  quantity = 1;
   category = '';
   code_sku = '';
   code_bar = '';
@@ -25,8 +26,9 @@ export class CriarProductComponent {
   width = 0;
   length = 0;
   weight = 0;
+  isLoading = false
 
-  constructor(private http: HttpConexionService) {}
+  constructor(private http: HttpConexionService,private router:Router) {}
 
   ngOnInit(): void {
     this.http.show();
@@ -46,7 +48,10 @@ export class CriarProductComponent {
     }
     return true;
   }
-
+  cantidade(){
+    if(this.quantity == null || this.quantity <= 0)
+      this.quantity = 1;
+  }
   construirBody(): any {
     // Asignar valores de acuerdo con las reglas del modelo
     const type_stock = this.tipo_stock === 'infinito' ? false : true;
@@ -70,6 +75,7 @@ export class CriarProductComponent {
   }
 
   criar_produto() {
+    this.isLoading = true
     if (!this.validarCampos()) {
       console.error('Error: Validación fallida.');
       return;
@@ -78,10 +84,30 @@ export class CriarProductComponent {
     const body = this.construirBody();
     const url = `${this.urlBase}products`;
     console.log('Body:', body);
-
+   
     this.http.post(url, body).subscribe({
-      next: (res) => console.log('Producto creado con éxito:', res),
-      error: (error) => console.error('Error al crear producto:', error),
+      next: (res) => { this.router.navigate(['/catalogo-product']), this.isLoading = false},
+      error: (error) => {console.error('Error al crear producto:', error); this.isLoading = false},
     });
   }
+  
+  calc_percente(){
+
+    if (this.price_sale === undefined || this.price_sale === null ) {
+      return "";
+  }
+  if (this.price === undefined || this.price === null ) {
+    return "";
+}
+
+
+  if (this.price <= 0 || this.price_sale <= 0) {
+      return "";
+  }
+
+  const lucro = this.price_sale - this.price;
+  const porcentagemLucro = (lucro / this.price) * 100;
+  return `${porcentagemLucro.toFixed(2)}%.`;
+    }
+    
 }

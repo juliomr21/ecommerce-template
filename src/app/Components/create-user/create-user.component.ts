@@ -25,6 +25,11 @@ export class CreateUserComponent {
   constructor(private http: HttpConexionService,private router:Router) {
 
   }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.http.hideF()
+  }
   create_user() {
     this.disableTemp = true;
     let data = {
@@ -40,23 +45,10 @@ export class CreateUserComponent {
         localStorage.setItem('user',res['user']);
         this.disableTemp = false;
         this.router.navigateByUrl('/home');},
-      (error) => {console.log(error);this.disableTemp = false; this.errorMsg = 'Erro ao realizar o cadastro. Por favor, tente novamente.'}
+      (error:any) => {console.log(error);this.disableTemp = false; this.errorMsg = error.error.msg}
     )
   }
-  create_producto() {
-    let data = {
-      "name": "Nuevo Producto cuatro",
-      "description": "Descripción del nuevo producto cuatro",
-      "price": 35.45,
-      "stock": 10,
-      "category": "Nueva Categoría q",
-    }
-    let url = this.URL_BASE + 'products'
-    this.http.post_login(url, data).subscribe(
-      res => console.log(res),
-      error => console.log(error)
-    )
-  }
+ 
   //66cbe2276c29678c3b7bc672
   delete_prod() {
     const url = `${this.URL_BASE}products/67392b9eda8daf8308e10a96`;
