@@ -11,3 +11,22 @@ label {
     color: #5F3DDE;
     font-weight: 500;
 }
+.btn-register:disabled{
+    opacity: 0.5;
+  }
+  .spinner {
+    border: 3px solid #f3f3f3;
+    border-top:3px solid #7c7c7d;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .btn-register:disabled{
+    opacity: 0.5;
+  }

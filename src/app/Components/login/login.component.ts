@@ -14,23 +14,34 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 userName = '';
 password = '';
+typePassword = 'password';
+isLoading = false;
+errorMsg = '';
 urlBase = environment.URL_BASE
   constructor(private http: HttpConexionService,private router: Router) {
 
 }
 login(){
+  this.isLoading = true;
 let url = this.urlBase + 'auth/login';
 let data = {
   email: this.userName,
   password: this.password
 }
+this.errorMsg = '';
 this.http.post_login(url,data).subscribe(
   (res:any) => {console.log(res);
     localStorage.setItem('token',res['token']);
     localStorage.setItem('user',res['user']);
     this.router.navigateByUrl('/home');
   },
-  error => console.log(error)
-)
+  (error) => {
+    this.isLoading = false;
+    this.errorMsg = 'Usuário ou senha incorretos';
+    console.log(error)
+  } )
+}
+changePassword(){
+this.typePassword = this.typePassword === 'password' ? 'text' : 'password';
 }
 }
