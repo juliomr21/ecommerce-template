@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpConexionService } from '../../http-conexion.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,11 +10,12 @@ import { Router } from '@angular/router';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-constructor(private router: Router) {}
+  visible = false;
+constructor(private router: Router, private http:HttpConexionService) {}
   
-  // ngOnInit(): void {
-  //   console.log('footer');
-  // }
+  ngOnInit(): void {
+    this.http.visibleFooter$.subscribe(res => this.visible = res)
+  }
 
   goTo(route: string) {
     this.router.navigate([route]);

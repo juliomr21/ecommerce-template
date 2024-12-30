@@ -18,11 +18,13 @@ ngOnInit(): void {
   //Add 'implements OnInit' to the class.
   this.usuario = localStorage.getItem('user') || '';
   this.http.hide();
+  this.http.showF();
 }
 ngOnDestroy(): void {
   //Called once, before the instance is destroyed.
   //Add 'implements OnDestroy' to the class.
   this.http.show();
+  
 }
 go_to(dir:string){
   this.router.navigateByUrl(dir);

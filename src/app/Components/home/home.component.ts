@@ -19,6 +19,7 @@ export class HomeComponent {
  }
  ngOnInit(): void {
   this.http.hide();
+  this.http.hideF(); 
   let url = this.URL_BASE + 'products'
   this.http.get(url).subscribe(
     res => console.log(res)

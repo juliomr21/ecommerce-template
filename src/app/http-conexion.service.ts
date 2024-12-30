@@ -10,6 +10,8 @@ export class HttpConexionService {
   constructor(private http :HttpClient) { }
   private visibleBar = new BehaviorSubject<boolean>(false);
   visibleBar$ = this.visibleBar.asObservable();
+  private visibleFooter = new BehaviorSubject<boolean>(true);
+  visibleFooter$ = this.visibleFooter.asObservable();
   private temaBar = new BehaviorSubject<string>('');
   temaBar$ = this.temaBar.asObservable();
 show() {
@@ -21,6 +23,13 @@ show() {
   }
   setTema(tema:string){
     this.temaBar.next(tema);
+  }
+  showF() {
+    this.visibleFooter.next(true);
+  }
+
+  hideF() {
+    this.visibleFooter.next(false);
   }
   get(url:string){
     const token = localStorage.getItem('token');
