@@ -33,4 +33,8 @@ constructor(private http: HttpConexionService,private router:Router) {}
  criar_p(){
    this.router.navigate(['create-product']);
  }
+ go_to(id:any){
+  let url = `producto-detail/${id}`
+  this.router.navigate([url])
+ }
 }

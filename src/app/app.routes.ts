@@ -6,6 +6,7 @@ import { PagInicialComponent } from './Components/pag-inicial/pag-inicial.compon
 import { CriarProductComponent } from './Components/criar-product/criar-product.component';
 import { MenuProductComponent } from './Components/menu-product/menu-product.component';
 import { ListProductComponent } from './Components/list-product/list-product.component';
+import { ProductDetailComponent } from './Components/product-detail/product-detail.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +36,9 @@ export const routes: Routes = [
     {
         path:'catalogo-product',
         component:ListProductComponent
+    },
+    {
+        path:'producto-detail/:id',
+        component:ProductDetailComponent
     }
 ];
