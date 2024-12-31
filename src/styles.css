@@ -40,6 +40,22 @@ body{
     font-size: 20px;
     font-weight: bold;
 }
+.btn-delete{
+    background: #e53535;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+    width:  100%;
+    height: 48px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.btn-delete:disabled{
+    opacity: 0.5;
+}
 .btn-login{
     background: #fff;
     color: #5F3DDE;

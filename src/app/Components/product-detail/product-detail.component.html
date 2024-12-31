@@ -1,4 +1,4 @@
-<div style="width: 90%;margin-left: auto;margin-right: auto;height: calc(100dvh - 128px);">
+<div style="width: 90%;margin-left: auto;margin-right: auto;height: calc(100dvh - 216px);">
     @if(isLoading){
         <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
             <div class="spinner" ></div>
@@ -13,7 +13,7 @@
             <h3><b>{{productoInfo.name}}</b></h3>
             <div>
                 <h5>Estoque: <b>{{productoInfo.stock}}</b></h5>
-                <h5>Preço: <b>{{productoInfo.price}}</b></h5>
+                <h5>Preço: <b>{{productoInfo.price_sale}}</b></h5>
             </div>
         </div>
 
@@ -22,5 +22,22 @@
     <p>{{productoInfo.description}}</p>
     }
   
-  
+   
 </div>
+<div style="width: 90%;margin-left: auto;margin-right: auto;">
+    <div style="width: 100%;">
+        <button class="btn-register f16" (click)="go_to_edit()" >Editar produto</button>
+    </div>
+    <div style="width: 100%;">
+        <button class="btn-delete f16"(click)="delete_prod()" [disabled]="deleting" >
+            <div style="display: flex;justify-content: center;gap: 20px;">
+                <div> Eliminar produto</div>
+                @if (deleting) {
+                  <div class="spinner"></div>
+             
+                   }
+              </div>
+           </button>
+    </div>
+</div>
+

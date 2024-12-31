@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,16 +53,33 @@ show() {
     return this.http.post(url, body, { headers });
 
   }
-  delete(url: string) {
-    return this.http.delete(url, { observe: 'response' })
+  delete(url: string): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage o de donde lo almacenes
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Incluye el token en el encabezado Authorization
+    });
+
+    return this.http.delete(url, { headers, observe: 'response' })
       .pipe(
-        catchError(this.handleError)
+        catchError(this.handleError) // Maneja errores
       );
   }
-  
-  private handleError(error: HttpErrorResponse) {
-    console.error('An error occurred:', error.message);
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+
+  private handleError(error: any): Observable<never> {
+    console.error('Error occurred:', error);
+    return throwError(() => new Error('An error occurred; please try again later.'));
   }
-  
+  put(url: string, body: any): Observable<any> {
+    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', // Especifica el tipo de contenido
+      'Authorization': `Bearer ${token}` // Agrega el token en el encabezado
+    });
+
+    return this.http.put(url, body, { headers })
+      .pipe(
+        catchError(this.handleError) // Manejo de errores
+      );
+  }
+
 }

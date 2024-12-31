@@ -29,8 +29,8 @@
                                     <div style="display: flex;height: 40px;justify-content: space-between;">
                                         <div >
                                          
-                                            <span>{{item.name}}</span>
-                                            <!-- <span>Sabonete Íntimo em Barra Coco Biosex – 90 g</span> -->
+                                            <span><b>{{item.name}}</b> </span>
+                                           
                                         </div>
                                         <div>
                                             <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
                                         
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
-                                        <div>R$ <b>{{item.price}}</b> </div>
+                                        <div>R$ <b>{{item.price_sale}}</b> </div>
                                         <div style="width: 110px;">Estoque: @if(item.stock){ <b>{{item.stock}} </b>}@else {&infin;}</div>
                                     </div>
                                 </div>

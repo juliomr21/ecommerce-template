@@ -7,6 +7,7 @@ import { CriarProductComponent } from './Components/criar-product/criar-product.
 import { MenuProductComponent } from './Components/menu-product/menu-product.component';
 import { ListProductComponent } from './Components/list-product/list-product.component';
 import { ProductDetailComponent } from './Components/product-detail/product-detail.component';
+import { ProductEditarComponent } from './Components/product-editar/product-editar.component';
 
 export const routes: Routes = [
     {
@@ -40,5 +41,9 @@ export const routes: Routes = [
     {
         path:'producto-detail/:id',
         component:ProductDetailComponent
+    },
+    {
+        path:'producto-editar/:id',
+        component:ProductEditarComponent
     }
 ];
