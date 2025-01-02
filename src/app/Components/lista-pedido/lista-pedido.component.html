@@ -37,7 +37,7 @@
                                            
                                         </div>
                                         <div>
-                                            <span> {{item.date.slice(0,10)}}</span>
+                                            <span> {{item.date| dinamicFormat:'date'}}</span>
                                            
                                             <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M9.64337 8.66675C10.074 8.66675 10.4231 8.36827 10.4231 8.00008C10.4231 7.63189 10.074 7.33341 9.64337 7.33341C9.21274 7.33341 8.86365 7.63189 8.86365 8.00008C8.86365 8.36827 9.21274 8.66675 9.64337 8.66675Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
                                         <div>Items: <b>{{item.total}}</b> </div>
-                                        <div style="width: 110px;">R$ <b>{{calc_price($index)}} </b></div>
+                                        <div style="width: 110px;text-align: end;"> <b>{{calc_price($index)| dinamicFormat:'currency'}} </b></div>
                                     </div>
                                 </div>
                               

@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
+import { DinamicFormatPipe } from "../../Pipes/dinamic-format.pipe";
 @Component({
   selector: 'app-criar-pedido',
   standalone: true,
-  imports: [CascadeSelectModule,FormsModule,DropdownModule],
+  imports: [CascadeSelectModule, FormsModule, DropdownModule, DinamicFormatPipe],
   templateUrl: './criar-pedido.component.html',
   styleUrl: './criar-pedido.component.css'
 })
@@ -26,7 +27,7 @@ constructor(private http: HttpConexionService,private router:Router) {}
 
   ngOnInit(): void {
     this.http.show();
-    this.http.setTema('Pedido');
+    this.http.setTema('Pedidos');
     this.load_data();
     this.load_clientes()
   }

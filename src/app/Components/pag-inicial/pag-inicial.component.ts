@@ -19,6 +19,7 @@ ngOnInit(): void {
   this.usuario = localStorage.getItem('user') || '';
   this.http.hide();
   this.http.showF();
+  this.http.setTema('home')
 }
 ngOnDestroy(): void {
   //Called once, before the instance is destroyed.

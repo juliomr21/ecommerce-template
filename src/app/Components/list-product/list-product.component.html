@@ -43,7 +43,7 @@
                                         
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
-                                        <div>R$ <b>{{item.price_sale}}</b> </div>
+                                        <div> <b>{{item.price_sale | dinamicFormat:'currency'}}</b> </div>
                                         <div style="width: 110px;">Estoque: @if(item.stock){ <b>{{item.stock}} </b>}@else {&infin;}</div>
                                     </div>
                                 </div>

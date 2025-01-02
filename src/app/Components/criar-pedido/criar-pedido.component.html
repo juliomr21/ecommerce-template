@@ -48,7 +48,7 @@
                                         
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
-                                        <div>R$ <b>{{item.price_sale}}</b> </div>
+                                        <div><b>{{item.price_sale | dinamicFormat:'currency'}}</b> </div>
                                         <div style="width: 110px;">Estoque: @if(item.stock){ <b>{{item.stock}} </b>}@else {&infin;}</div>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
     <span>Items: <b>{{total_items}}</b></span>
 </div>
 <div>
-    <span>Valor: <b>R$ {{valor_total}}</b></span>
+    <span>Valor: <b> {{valor_total | dinamicFormat:'currency'}}</b></span>
 </div>
 </div>
     </div>

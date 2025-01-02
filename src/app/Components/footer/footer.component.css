@@ -7,3 +7,7 @@
   flex-direction: column;
 
 }
+.active-item{
+  color: #FFDE69;
+  font-weight: bold;
+}
