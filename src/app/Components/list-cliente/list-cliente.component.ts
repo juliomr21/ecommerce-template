@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HttpConexionService } from '../../http-conexion.service';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { DinamicFormatPipe } from "../../Pipes/dinamic-format.pipe";
 
 @Component({
   selector: 'app-list-cliente',
   standalone: true,
-  imports: [],
+  imports: [DinamicFormatPipe],
   templateUrl: './list-cliente.component.html',
   styleUrl: './list-cliente.component.css'
 })

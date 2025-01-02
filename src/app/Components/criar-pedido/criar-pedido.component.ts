@@ -56,7 +56,8 @@ constructor(private http: HttpConexionService,private router:Router) {}
   let data = {
     client:this.cliente._id,
     products:this.lis_pedidos,
-    total:this.total_items
+    total:this.total_items,
+    valor:this.valor_total
   }
   this.http.post(url,data).subscribe((res:any)=>{
     console.log('pedido creado',res)
