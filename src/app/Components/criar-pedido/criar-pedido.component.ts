@@ -4,10 +4,11 @@ import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
 @Component({
   selector: 'app-criar-pedido',
   standalone: true,
-  imports: [CascadeSelectModule,FormsModule],
+  imports: [CascadeSelectModule,FormsModule,DropdownModule],
   templateUrl: './criar-pedido.component.html',
   styleUrl: './criar-pedido.component.css'
 })
@@ -39,10 +40,7 @@ constructor(private http: HttpConexionService,private router:Router) {}
   this.http.get(url).subscribe(
   (res:any) => {
    console.log(res)
-   this.list_clientes = res.map((cliente: any) => ({
-    label: cliente.name, // Texto que se mostrará en el CascadeSelect
-    value: cliente._id,  // Valor que se asociará al cliente seleccionado
-  }));
+   this.list_clientes = res
     // this.show_list = true;
   }
   )

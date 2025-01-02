@@ -1,12 +1,12 @@
 <div style="width: 94%;margin-left: auto;margin-right: auto;">
     <div style="height: 72px;"></div>
-    <p-cascadeSelect
-  [(ngModel)]="cliente"
-  [options]="list_clientes"
-  optionLabel="label" 
-  placeholder="Selecciona cliente">
-</p-cascadeSelect>
-    <div class="flex gp4">
+    <p-dropdown 
+    [options]="list_clientes" 
+    [(ngModel)]="cliente" 
+    optionLabel="name" 
+    placeholder="Selecione cliente" />
+   
+    <div class="flex gp4 mt0">
         <input type="text" placeholder="Pesquisar" class="input-geral" >
         <div class="btn-filter">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
                 
         </div>
     </div>
-    <div style="height: calc(100vh - 310px);overflow-y: auto;">
+    <div style="height: calc(100dvh - 360px);overflow-y: auto;">
         @if (!show_list) {
             <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
                 <div class="spinner" ></div>
@@ -27,9 +27,9 @@
                 @if(list_products.length > 0){
                     @for (item of list_products; track $index) {
                         <div class="mt0">
-                            <div class="card-product" >
+                            <div class="card-product" (click)="go_to(item._id)">
                                 <div style="height: 56px;width: 56px;">
-                                    <img src="images/cliente.png" alt="" style="width: 100%;height: 100%;">
+                                    <img src="images/img.png" alt="" style="width: 100%;height: 100%;">
                                 </div>
                                 <div style="width: 80%;">
                                     <div style="display: flex;height: 40px;justify-content: space-between;">
@@ -39,18 +39,17 @@
                                            
                                         </div>
                                         <div>
-                                            <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9.64337 8.66675C10.074 8.66675 10.4231 8.36827 10.4231 8.00008C10.4231 7.63189 10.074 7.33341 9.64337 7.33341C9.21274 7.33341 8.86365 7.63189 8.86365 8.00008C8.86365 8.36827 9.21274 8.66675 9.64337 8.66675Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M9.64337 4.00008C10.074 4.00008 10.4231 3.7016 10.4231 3.33341C10.4231 2.96522 10.074 2.66675 9.64337 2.66675C9.21274 2.66675 8.86365 2.96522 8.86365 3.33341C8.86365 3.7016 9.21274 4.00008 9.64337 4.00008Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M9.64337 13.3334C10.074 13.3334 10.4231 13.0349 10.4231 12.6667C10.4231 12.2986 10.074 12.0001 9.64337 12.0001C9.21274 12.0001 8.86365 12.2986 8.86365 12.6667C8.86365 13.0349 9.21274 13.3334 9.64337 13.3334Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.4998 6.66675V13.3334M7.1665 10.0001H13.8332M18.8332 10.0001C18.8332 14.6025 15.1022 18.3334 10.4998 18.3334C5.89746 18.3334 2.1665 14.6025 2.1665 10.0001C2.1665 5.39771 5.89746 1.66675 10.4998 1.66675C15.1022 1.66675 18.8332 5.39771 18.8332 10.0001Z" stroke="#5F3DDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
+                                                
                                                 
                                         </div>
                                         
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
-                                        <div> Email: <br> <b>{{item.email}}</b> </div>
-                                        <div style="width: 110px;">Telefone: <br> <b>{{item.phone}} </b></div>
+                                        <div>R$ <b>{{item.price_sale}}</b> </div>
+                                        <div style="width: 110px;">Estoque: @if(item.stock){ <b>{{item.stock}} </b>}@else {&infin;}</div>
                                     </div>
                                 </div>
                               
@@ -60,17 +59,31 @@
                         </div>
                     }
                 }@else {
-                    <span>Sem clientes para mostrar</span>
+                    <span>Sem produtos para mostrar</span>
                 }
              }
-      
-      
+    </div>
+    <div style="height: 50px;width: 100%;background: #ccc;margin-top: 4px;">
+       <div style="display: flex;justify-content: space-between;">
+        <div style="padding: 4px;">
+            <b>Informação do pedido</b>
+        </div>
+        <div class="btn-detalhe">
+            Ver detalhes
+        </div>
+       </div>
         
-       
-    
+<div style="display: flex;justify-content: space-between;align-items: center; padding: 4px;">
+<div>
+    <span>Items: <b>3</b></span>
+</div>
+<div>
+    <span>Valor: <b>R$ 250,00</b></span>
+</div>
+</div>
     </div>
     <div style="margin-bottom: 10px;">
-        <button class="btn-register f16" (click)="criar_p()">Criar novo cliente</button>
+        <button class="btn-register f16" (click)="criar_p()">Finalizar pedido</button>
     </div>
     
 </div>

@@ -33,3 +33,22 @@
     align-items: center;
     gap: 8px;
 }
+.btn-detalhe{
+    width: fit-content;
+  height: 25px;
+  padding: 4px 6px;
+  background: #fff;
+  margin-left: auto;
+  color: #5F3DDE;
+  border-radius: 0 4px 0 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+::ng-deep .p-dropdown {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+.btn-register{
+    margin-top: 4px;
+}
