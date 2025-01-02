@@ -1,0 +1,76 @@
+<div style="width: 94%;margin-left: auto;margin-right: auto;">
+    <div style="height: 72px;"></div>
+    <p-cascadeSelect
+  [(ngModel)]="cliente"
+  [options]="list_clientes"
+  optionLabel="label" 
+  placeholder="Selecciona cliente">
+</p-cascadeSelect>
+    <div class="flex gp4">
+        <input type="text" placeholder="Pesquisar" class="input-geral" >
+        <div class="btn-filter">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 3H2L10 12.46V19L14 21V12.46L22 3Z" stroke="#F3F3F3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+                
+        </div>
+    </div>
+    <div style="height: calc(100vh - 310px);overflow-y: auto;">
+        @if (!show_list) {
+            <div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+                <div class="spinner" ></div>
+            </div>
+           
+       
+             }@else {
+                @if(list_products.length > 0){
+                    @for (item of list_products; track $index) {
+                        <div class="mt0">
+                            <div class="card-product" >
+                                <div style="height: 56px;width: 56px;">
+                                    <img src="images/cliente.png" alt="" style="width: 100%;height: 100%;">
+                                </div>
+                                <div style="width: 80%;">
+                                    <div style="display: flex;height: 40px;justify-content: space-between;">
+                                        <div >
+                                         
+                                            <span><b>{{item.name}}</b> </span>
+                                           
+                                        </div>
+                                        <div>
+                                            <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.64337 8.66675C10.074 8.66675 10.4231 8.36827 10.4231 8.00008C10.4231 7.63189 10.074 7.33341 9.64337 7.33341C9.21274 7.33341 8.86365 7.63189 8.86365 8.00008C8.86365 8.36827 9.21274 8.66675 9.64337 8.66675Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9.64337 4.00008C10.074 4.00008 10.4231 3.7016 10.4231 3.33341C10.4231 2.96522 10.074 2.66675 9.64337 2.66675C9.21274 2.66675 8.86365 2.96522 8.86365 3.33341C8.86365 3.7016 9.21274 4.00008 9.64337 4.00008Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9.64337 13.3334C10.074 13.3334 10.4231 13.0349 10.4231 12.6667C10.4231 12.2986 10.074 12.0001 9.64337 12.0001C9.21274 12.0001 8.86365 12.2986 8.86365 12.6667C8.86365 13.0349 9.21274 13.3334 9.64337 13.3334Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                
+                                        </div>
+                                        
+                                    </div>
+                                    <div style="display: flex;justify-content: space-between;">
+                                        <div> Email: <br> <b>{{item.email}}</b> </div>
+                                        <div style="width: 110px;">Telefone: <br> <b>{{item.phone}} </b></div>
+                                    </div>
+                                </div>
+                              
+                              
+                            </div>
+                
+                        </div>
+                    }
+                }@else {
+                    <span>Sem clientes para mostrar</span>
+                }
+             }
+      
+      
+        
+       
+    
+    </div>
+    <div style="margin-bottom: 10px;">
+        <button class="btn-register f16" (click)="criar_p()">Criar novo cliente</button>
+    </div>
+    
+</div>
