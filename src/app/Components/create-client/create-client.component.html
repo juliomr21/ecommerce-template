@@ -1,0 +1,41 @@
+<div style="height: 64px;"></div>
+<div style="width: 94%;margin-left: auto;margin-right: auto;height: calc(100dvh - 285px);">
+    <div class="mt1 card pd8">
+        <div>
+            <label class="f16" for="">Nome e descrição</label>
+        </div>
+        <div class="mt1">
+            <label for="">Nome (*)</label>
+        </div>
+        <div>
+            <input  type="text" placeholder="Nome" class="input-geral" [(ngModel)]="nome">
+        </div>
+        <div >
+            <label for="">E-mail (*)</label>
+        </div>
+        <div>
+            <input  type="text" placeholder="Categoria do produto" class="input-geral" [(ngModel)]="email">
+        </div>
+        <div >
+            <label for="">Telefone</label>
+        </div>
+        <div>
+            <input  type="number" placeholder="(00)00000-0000" class="input-geral" [(ngModel)]="telefone">
+        </div>
+      
+       
+    </div>
+    <div class="mt1">
+        <span>Os campos obrigatórios estão marcados com (*)</span>
+        <span style="color: red;"><br> {{msg}}</span>
+        <button class="btn-register" (click)="criar_cliente()" [disabled]="valida() || isLoading">
+            <div style="display: flex;justify-content: center;gap: 20px;">
+                <div>Criar cliente</div>
+                @if (isLoading) {
+                  <div class="spinner"></div>
+             
+                   }
+              </div>
+            </button>
+    </div>
+</div>

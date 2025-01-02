@@ -8,6 +8,8 @@ import { MenuProductComponent } from './Components/menu-product/menu-product.com
 import { ListProductComponent } from './Components/list-product/list-product.component';
 import { ProductDetailComponent } from './Components/product-detail/product-detail.component';
 import { ProductEditarComponent } from './Components/product-editar/product-editar.component';
+import { CreateClientComponent } from './Components/create-client/create-client.component';
+import { ListClienteComponent } from './Components/list-cliente/list-cliente.component';
 
 export const routes: Routes = [
     {
@@ -45,5 +47,13 @@ export const routes: Routes = [
     {
         path:'producto-editar/:id',
         component:ProductEditarComponent
+    },
+    {
+        path: 'criar-cliente',
+        component: CreateClientComponent
+    },
+    {
+        path: 'lista-cliente',
+        component: ListClienteComponent
     }
 ];
