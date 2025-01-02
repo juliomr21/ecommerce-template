@@ -18,21 +18,27 @@
            
        
              }@else {
-                @if(list_products.length > 0){
-                    @for (item of list_products; track $index) {
+                @if(list_pedidos.length > 0){
+                    @for (item of list_pedidos; track $index) {
                         <div class="mt0">
-                            <div class="card-product" (click)="go_to(item._id)">
+                            <div class="card-product" >
                                 <div style="height: 56px;width: 56px;">
-                                    <img src="images/img.png" alt="" style="width: 100%;height: 100%;">
+                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="0.0185547" width="39.1036" height="40" rx="19.5518" fill="#FEFEFE"/>
+                                        <path d="M11.2371 24.1667L19.5704 28.3334L27.9037 24.1667M11.2371 20.0001L19.5704 24.1667L27.9037 20.0001M19.5704 11.6667L11.2371 15.8334L19.5704 20.0001L27.9037 15.8334L19.5704 11.6667Z" stroke="#4A3A85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        
                                 </div>
                                 <div style="width: 80%;">
                                     <div style="display: flex;height: 40px;justify-content: space-between;">
                                         <div >
                                          
-                                            <span><b>{{item.name}}</b> </span>
+                                            <span><b>{{item.client.name}}</b> </span>
                                            
                                         </div>
                                         <div>
+                                            <span> {{item.date.slice(0,10)}}</span>
+                                           
                                             <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M9.64337 8.66675C10.074 8.66675 10.4231 8.36827 10.4231 8.00008C10.4231 7.63189 10.074 7.33341 9.64337 7.33341C9.21274 7.33341 8.86365 7.63189 8.86365 8.00008C8.86365 8.36827 9.21274 8.66675 9.64337 8.66675Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M9.64337 4.00008C10.074 4.00008 10.4231 3.7016 10.4231 3.33341C10.4231 2.96522 10.074 2.66675 9.64337 2.66675C9.21274 2.66675 8.86365 2.96522 8.86365 3.33341C8.86365 3.7016 9.21274 4.00008 9.64337 4.00008Z" stroke="#1E1E1E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -43,8 +49,8 @@
                                         
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
-                                        <div>R$ <b>{{item.price_sale}}</b> </div>
-                                        <div style="width: 110px;">Estoque: @if(item.stock){ <b>{{item.stock}} </b>}@else {&infin;}</div>
+                                        <div>Items: <b>{{item.total}}</b> </div>
+                                        <div style="width: 110px;">R$ <b>{{calc_price($index)}} </b></div>
                                     </div>
                                 </div>
                               
@@ -54,7 +60,7 @@
                         </div>
                     }
                 }@else {
-                    <span>Sem produtos para mostrar</span>
+                    <span>Sem pedidos para mostrar</span>
                 }
              }
       
@@ -64,7 +70,7 @@
     
     </div>
     <div style="margin-bottom: 10px;">
-        <button class="btn-register f16" (click)="criar_p()">Adicionar novo produto</button>
+        <button class="btn-register f16" (click)="criar_p()">Criar pedido</button>
     </div>
     
 </div>
