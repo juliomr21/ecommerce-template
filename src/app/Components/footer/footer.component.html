@@ -65,7 +65,7 @@
         </div>
 }
 <p-overlayPanel #op [style]="{width:'100px',heihgt:'100px'}" >
-    <div style="display: flex; gap: 10px;" (click)="logout()" >
+    <div style="display: flex; gap: 10px;" (click)="logout();op.hide()" >
         <div>
             <b>Sair</b>
         </div>
