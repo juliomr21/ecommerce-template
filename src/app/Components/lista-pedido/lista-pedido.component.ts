@@ -57,7 +57,7 @@ calc_price(it:any){
    this.router.navigate(['criar-pedido']);
  }
  go_to(id:any){
-  let url = `producto-detail/${id}`
+  let url = `reporte/${id}`
   this.router.navigate([url])
  }
 }

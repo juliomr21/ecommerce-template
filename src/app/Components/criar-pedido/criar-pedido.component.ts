@@ -61,7 +61,7 @@ constructor(private http: HttpConexionService,private router:Router) {}
   }
   this.http.post(url,data).subscribe((res:any)=>{
     console.log('pedido creado',res)
-    this.router.navigate(['lista-pedidos'])
+    this.router.navigate(['reporte/'+res._id]);
   
     this.isLoading = false;
   })

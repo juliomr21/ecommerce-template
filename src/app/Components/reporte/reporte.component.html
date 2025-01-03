@@ -1,0 +1,79 @@
+<div style="height: 72px;">
+
+</div>
+<!-- <h2>Comprovante</h2> -->
+<div style="height: calc(100dvh - 200px);">
+    @if(isLoading){
+    <div style="display: flex;height: 100%;justify-content: center;align-items: center;">
+        <div class="spinner"></div>
+    </div>
+    }@else {
+    <h2 style="text-align: center;">Loja {{usuario}}</h2>
+    <h1 style="text-align: center;">{{infoPedido.valor | dinamicFormat:'currency'}}</h1>
+    <div style="border-top: 2px dashed #ccc; width: 90%;margin-left: auto;margin-right: auto;margin-bottom: 24px;">
+    </div>
+    <div style="height: 350px;overflow-y: auto;width: 90%;margin-left: auto;margin-right: auto;">
+        @for (item of infoPedido.products; track $index) {
+            <div style="display: flex;justify-content: space-between;margin-bottom: 32px;">
+                <div>
+                    <div>
+                        <b>{{item.product.name}}</b>
+        
+                    </div>
+                    <div style="font-size: 12px;">
+                        {{item.quantity}} x {{item.product.price_sale | dinamicFormat:'currency'}}
+                    </div>
+                </div>
+                <div>{{item.product.price_sale * item.quantity | dinamicFormat:'currency'}}</div>
+            </div>
+            }
+    </div>
+    <div style="border-top: 2px dashed #ccc; width: 90%;margin-left: auto;margin-right: auto;margin-bottom: 24px;"> </div>
+    <div style="width: 90%;margin-left: auto;margin-right: auto;display: flex;flex-direction: column;gap: 16px;">
+        <div style="display: flex;justify-content: space-between;">
+            <div>
+                <b>Data</b>
+            </div>
+            <div>
+                <span>{{infoPedido.date | dinamicFormat:'date' }}</span>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <div>
+                <b>Pedido</b>
+            </div>
+            <div>
+                <span>{{infoPedido._id }}</span>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <div>
+                <b>Cliente</b>
+            </div>
+            <div>
+                <span>{{infoPedido.client.name }}</span>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <div>
+                <b>Items</b>
+            </div>
+            <div>
+                <span>{{infoPedido.total }}</span>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <div>
+                <b>Total</b>
+            </div>
+            <div>
+                <span>{{infoPedido.valor | dinamicFormat:'currency'}}</span>
+            </div>
+        </div>
+        <button class="btn-register f16" (click)="voltar()">Voltar </button>
+    </div>
+
+    }
+
+
+</div>

@@ -12,6 +12,7 @@ import { CreateClientComponent } from './Components/create-client/create-client.
 import { ListClienteComponent } from './Components/list-cliente/list-cliente.component';
 import { CriarPedidoComponent } from './Components/criar-pedido/criar-pedido.component';
 import { ListaPedidoComponent } from './Components/lista-pedido/lista-pedido.component';
+import { ReporteComponent } from './Components/reporte/reporte.component';
 
 export const routes: Routes = [
     {
@@ -65,5 +66,8 @@ export const routes: Routes = [
     {
         path:'lista-pedidos',
         component:ListaPedidoComponent
+    },{
+        path:'reporte/:id',
+        component:ReporteComponent
     }
 ];

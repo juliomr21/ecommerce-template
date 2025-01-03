@@ -21,7 +21,7 @@
                 @if(list_pedidos.length > 0){
                     @for (item of list_pedidos; track $index) {
                         <div class="mt0">
-                            <div class="card-product" >
+                            <div class="card-product" (click)="go_to(item._id)" >
                                 <div style="height: 56px;width: 56px;">
                                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="0.0185547" width="39.1036" height="40" rx="19.5518" fill="#FEFEFE"/>
