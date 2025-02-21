@@ -38,7 +38,7 @@ export class CreateUserComponent {
       email: this.email,
       role: this.role
     }
-    let url = this.URL_BASE + 'auth/register'
+    let url = this.URL_BASE + 'users/'
     this.http.post_login(url, data).subscribe(
       (res:any) => {console.log(res); 
         localStorage.setItem('token',res['token']);

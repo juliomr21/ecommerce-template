@@ -41,15 +41,16 @@ go_to(dir:string){
 
 }
 load_data(){
+  this.isLoading = false
   let url = `${this.urlBase}dashboard/summary`
-  this.http.get(url).subscribe(
-    (res:any) =>{
-      this.pedidos = res.today.totalOrders;
-      this.ingresos = res.today.totalSpending;
-      this.productos = res.today.differentProducts;
-      this.isLoading = false
-      console.log(res)
-    }
-  )
+  // this.http.get(url).subscribe(
+  //   (res:any) =>{
+  //     this.pedidos = res.today.totalOrders;
+  //     this.ingresos = res.today.totalSpending;
+  //     this.productos = res.today.differentProducts;
+  //     this.isLoading = false
+  //     console.log(res)
+  //   }
+  // )
 }
 }

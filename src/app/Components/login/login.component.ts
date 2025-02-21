@@ -28,16 +28,16 @@ ngOnInit(): void {
 }
 login(){
   this.isLoading = true;
-let url = this.urlBase + 'auth/login';
+let url = this.urlBase + 'login';
 let data = {
-  email: this.userName,
+   username: this.userName,
   password: this.password
 }
 this.errorMsg = '';
 this.http.post_login(url,data).subscribe(
   (res:any) => {console.log(res);
     localStorage.setItem('token',res['token']);
-    localStorage.setItem('user',res['user']);
+    localStorage.setItem('user',res['name']);
     this.router.navigateByUrl('/home');
   },
   (error) => {

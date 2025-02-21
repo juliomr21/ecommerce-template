@@ -28,6 +28,7 @@ constructor(private http: HttpConexionService,private router:Router) {}
    (res:any) => {
      this.list_products = res;
      this.show_list = true;
+     console.log(res)
    }
    )
  }
