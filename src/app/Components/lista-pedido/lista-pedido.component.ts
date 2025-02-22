@@ -23,15 +23,15 @@ constructor(private http: HttpConexionService,private router:Router) {}
     // this.load_data();
     this.load_pedidos()
   }
- load_data(){
-   let url = this.urlBase + 'products';
-   this.http.get(url).subscribe(
-   (res:any) => {
-     this.list_products = res;
+//  load_data(){
+//    let url = this.urlBase + 'products';
+//    this.http.get(url).subscribe(
+//    (res:any) => {
+//      this.list_products = res;
     
-   }
-   )
- }
+//    }
+//    )
+//  }
  load_pedidos(){
   let url = this.urlBase + 'orders';
   this.http.get(url).subscribe(
@@ -48,7 +48,7 @@ calc_price(it:any){
   console.log('list',this.list_pedidos[it].products)
   this.list_pedidos[it].products.forEach((element:any) => {
     
-    total += Number(element.product.price_sale * element.quantity)
+    total += Number(element.price * element.quantity)
    
   });
   return total

@@ -54,7 +54,7 @@ show() {
 
   }
   delete(url: string): Observable<any> {
-    const token = localStorage.getItem('token'); // Obtén el token del localStorage o de donde lo almacenes
+    const token = localStorage.getItem('access_token'); // Obtén el token del localStorage o de donde lo almacenes
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}` // Incluye el token en el encabezado Authorization
     });
@@ -70,7 +70,7 @@ show() {
     return throwError(() => new Error('An error occurred; please try again later.'));
   }
   put(url: string, body: any): Observable<any> {
-    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    const token = localStorage.getItem('access_token'); // Obtén el token del localStorage
     const headers = new HttpHeaders({
       'Content-Type': 'application/json', // Especifica el tipo de contenido
       'Authorization': `Bearer ${token}` // Agrega el token en el encabezado

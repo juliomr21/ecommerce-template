@@ -33,7 +33,7 @@
                                     <div style="display: flex;height: 40px;justify-content: space-between;">
                                         <div >
                                          
-                                            <span><b>{{item.client.name}}</b> </span>
+                                            <span><b>{{item.client_name}}</b> </span>
                                            
                                         </div>
                                         <div>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div style="display: flex;justify-content: space-between;">
                                         <div>Items: <b>{{item.total}}</b> </div>
-                                        <div style="width: 110px;text-align: end;"> <b>{{calc_price($index)| dinamicFormat:'currency'}} </b></div>
+                                        <div style="width: 110px;text-align: end;"> <b>{{item.valor| dinamicFormat:'currency'}} </b></div>
                                     </div>
                                 </div>
                               
