@@ -53,4 +53,8 @@ load_data(){
   //   }
   // )
 }
+func(){
+  this.urlBase = environment.URL_BASE + 'users/me';
+  this.http.get(this.urlBase).subscribe(res => console.log(res));
+}
 }

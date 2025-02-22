@@ -29,7 +29,7 @@ constructor(private http: HttpConexionService,private router:Router) {}
     console.log(res)
      this.list_products = res;
      this.show_list = true;
-   }
+   },(erro:any) =>{this.show_list = true; this.list_products = [];console.log('ddd',erro)} 
    )
  }
  criar_p(){

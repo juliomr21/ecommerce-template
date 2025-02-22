@@ -41,8 +41,8 @@ export class CreateUserComponent {
     let url = this.URL_BASE + 'users/'
     this.http.post_login(url, data).subscribe(
       (res:any) => {console.log(res); 
-        localStorage.setItem('token',res['token']);
-        localStorage.setItem('user',res['user']);
+        localStorage.setItem('access_token',res['access_token']);
+        localStorage.setItem('user',res['name']);
         this.disableTemp = false;
         this.router.navigateByUrl('/home');},
       (error:any) => {console.log(error);this.disableTemp = false; this.errorMsg = error.error.msg}

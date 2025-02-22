@@ -32,7 +32,7 @@ show() {
     this.visibleFooter.next(false);
   }
   get(url:string){
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
       "Authorization": "Bearer "+ token
@@ -45,7 +45,7 @@ show() {
   }
   post(url:string,body:any){
     
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
       "Authorization": "Bearer "+ token

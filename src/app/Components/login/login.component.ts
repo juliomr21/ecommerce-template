@@ -36,7 +36,7 @@ let data = {
 this.errorMsg = '';
 this.http.post_login(url,data).subscribe(
   (res:any) => {console.log(res);
-    localStorage.setItem('token',res['token']);
+    localStorage.setItem('access_token',res.access_token);
     localStorage.setItem('user',res['name']);
     this.router.navigateByUrl('/home');
   },
